@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+    <script src="../../../vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <!-- 注：别忘了绑定id！绑定id之后才能调用
+        1.利用script标签，注意类型为text/x-template
+        <script type="text/x-template" id="mycpn">
+            <div>
+                <h1>hello</h1>
+                <p>world</p>
+            </div>
+        </script> -->
+
+        <!-- 2.利用template标签(常用) -->
+        <template id="mycpn">
+        <!-- 注！在定义子组件模板时必须拥有一个根<div>否则会报错！ -->
+            <div>
+                <h1>hello</h1>
+                <p>world</p>
+            </div>
+        </template>
+    </div>
+    <script>
+       
+        Vue.component('my-cpn',{
+            template:'#mycpn'
+        })
+
+        const root = new Vue({
+            el:"#root",           
+        })
+    </script>
+</body>
+</html>

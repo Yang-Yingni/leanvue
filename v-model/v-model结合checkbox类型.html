@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+    <script src="../../../vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <!-- 1.checkbox单选框 （v-model绑定值为Boolean类型,勾选即为true -->
+        <label for="license">
+            <input type="checkbox" id="license" value="agree" v-model="isAgree">同意协议
+        </label>
+        <h3>您选择的是：{{isAgree}}</h3>
+        <button :disabled="!isAgree">下一步</button>
+        <!-- 2.checkbox多选框（v-model绑定值为数组类型 -->
+        <br>
+        <input type="checkbox" value="篮球" v-model="hobbies">篮球
+        <input type="checkbox" value="足球" v-model="hobbies">足球
+        <input type="checkbox" value="羽毛球" v-model="hobbies">羽毛球
+        <input type="checkbox" value="乒乓球" v-model="hobbies">乒乓球
+        <h3>您选择的爱好为：{{hobbies}}</h3>
+        <br>
+        <!-- v-model的动态值绑定 (结合v-bind:-->
+        <label v-for="item in originHobbies" :for="item">
+        <input type="checkbox" :value="item" :id="item" v-model="newHobbies">{{item}}
+        </label>
+        <h3>您选择的爱好为：{{newHobbies}}</h3>
+
+    </div>
+    <script>
+        new Vue({
+            el:"#root",
+            data:{
+                isAgree:false,
+                hobbies:[],
+                originHobbies:['篮球','足球','台球','羽毛球','高尔夫球'],
+                newHobbies:[]
+            }
+        })
+    </script>
+</body>
+</html>

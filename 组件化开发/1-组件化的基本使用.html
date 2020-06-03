@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+    <script src="../../../vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <!-- 3.使用组件 -->
+        <my-cpn></my-cpn>
+        <my-cpn></my-cpn>
+        <my-cpn></my-cpn>
+        -------
+        <cpn></cpn>
+    </div>
+    <script>
+        //1.创建组件构造器对象：利用Vue.extend(对象)
+        const cpnConstractor = Vue.extend({
+            template:`
+            <div>
+                <h1>hello</h1>
+                <p>world</p>
+            </div>`
+        })
+        //2.注册组件（此方式注册的是全局组件，意味着可以在多个Vue实例下使用）：
+            //利用Vue.component('组件的标签名'，组件构造器对象)
+        Vue.component('my-cpn',cpnConstractor)
+
+        const root = new Vue({
+            el:"#root",
+            //注册局部组件:components:{组件标签名:组件构造器对象}
+            components:{
+                cpn:cpnConstractor
+            }
+           
+        })
+    </script>
+</body>
+</html>

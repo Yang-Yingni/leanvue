@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../../../vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- 1.事件调用的方法没有参数，加不加（）都可 -->
+        <button @click="btn1Click">btn1</button>
+        <button @click="btn2Click()">btn2</button>
+        <!-- 2.事件调用方法有参数，通过（）内容传参    -注：此处加了''所以参数为字符串形式，否则为变量 -->
+        <button @click="btn3Click('abc')">btn3</button>
+        <button @click="btn4Click()">btn4</button>  <!-- 由于没写参数，所以实际上是传了一个undefined变量进去 -->
+        <!-- 3.事件调用方法有参数，但在写方法时省略了（），由于方法本身需要一个参数，这时vue会默认地将浏览器产生的event事件对象作为参数传入到方法 -->
+        <button @click="btn5Click">btn5</button>
+        <!-- 4.在方法定义时需要event对象，同时也需要其他参数情况：利用$event手动获取浏览器的event事件对象 -->
+        <button @click="btn6Click(123,$event)">btn6</button>
+    </div>
+
+    <script>
+        const app = new Vue({
+            el:"#app",
+            methods:{
+                btn1Click(){
+                    console.log('11111111')
+                },
+                btn2Click(){
+                    console.log('22222222')
+                },
+                btn3Click(name){
+                    console.log('33333333',name)
+                },
+                btn4Click(name){
+                    console.log('44444444',name)
+                },
+                btn5Click(name){
+                    console.log('55555555',name)
+                },
+                btn6Click(name,event){
+                    console.log('66666666',name,event)
+                },
+
+            }
+
+        }) 
+    </script>
+    
+</body>
+</html>

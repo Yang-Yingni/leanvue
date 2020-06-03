@@ -1,0 +1,35 @@
+{
+  "name": "meetwebpack",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack",
+    "//": "--注释--：在脚本中将webpack语句映射为build语句，之后直接执行“npm run build”=执行“webpack” ",
+    "///": "且在脚本里执行的“webpack”优先从本地node_modules文件夹中找webpack命令,避免本地与全局webpack版本不一致带来的麻烦(只要在终端敲命令，用的都是全局",
+    "dev":"webpack-dev-server --open" 
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-preset-es2015": "^6.24.1",
+    "css-loader": "^3.4.2",
+    "file-loader": "^6.0.0",
+    "html-webpack-plugin": "^3.2.0",
+    "less": "^3.11.1",
+    "less-loader": "^5.0.0",
+    "style-loader": "^1.1.3",
+    "uglifyjs-webpack-plugin": "^1.1.1",
+    "url-loader": "^4.0.0",
+    "vue-loader": "^13.0.0",
+    "vue-template-compiler": "^2.6.11",
+    "webpack": "^3.6.0",
+    "webpack-dev-server": "^2.9.1"
+  },
+  "dependencies": {
+    "vue": "^2.6.11"
+  }
+}

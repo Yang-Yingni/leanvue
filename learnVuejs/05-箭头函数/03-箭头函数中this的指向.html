@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title></title>
+</head>
+<body>
+  
+  <script>
+//什么时候使用箭头函数？
+//答：当准备把一个函数作为参数传到另一个函数中时（如setTimeout(函数,延时)函数
+
+//this指向问题
+//Q:箭头函数中的this如何查找？
+//A:向外层作用域中层层查找，直到有this的定义
+
+setTimeout (function () {
+  console.log(this); //打印结果为window
+}, 1000)
+
+setTimeout( () => {
+  console.log(this); //打印结果为window
+},1000)
+
+const obj = {
+  aaa() {
+    setTimeout (function () {
+      console.log(this); //打印结果为window
+    }, 1000)
+  },
+  bbb() {
+    setTimeout( () => {
+      console.log(this); //打印结果为object
+    },1000)
+  }
+}
+obj.aaa()
+obj.bbb()
+
+
+const obj2 = {
+  aaa() {
+    setTimeout (function () {
+      setTimeout (function () {
+        console.log(this); //打印结果为window
+      }, 1000)
+
+      setTimeout( () => {
+        console.log(this); //打印结果为window（因为外层为function函数
+      },1000) 
+    }, 1000)
+  },
+  bbb() {
+    setTimeout( () => {
+      setTimeout (function () {
+        console.log(this); //打印结果为window
+      }, 1000)
+
+      setTimeout( () => {
+        console.log(this); //打印结果为object（因为最外层this指向对象obj2
+      },1000) 
+    },1000)
+  }
+}
+obj2.aaa()
+obj2.bbb()
+
+  </script>
+</body>
+</html>

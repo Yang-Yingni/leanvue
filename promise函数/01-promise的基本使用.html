@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title></title>
+</head>
+<body>
+  <script>
+    //什么时候会用到Promise？？
+    //处理异步操作时（如网络请求，setTimeout函数），使用Promise对这个异步操作进行封装
+    //new 的时候，即构造函数，此时会（1，保存一些状态信息 2.执行传入的函数
+    //在执行传入的函数时（这里函数都用箭头函数形式了），同时传入了两个参数 resolve 和 reject，而这两个参数本身又是函数
+    new Promise( (resolve,reject) => {
+      setTimeout( () => {
+        //成功时调用resolve函数并传入数据，在then里调用函数处理
+        //resolve('参数')
+        //失败时调用reject函数并传入错误信息，在catch里处理
+        reject('错误信息')
+      },1000)
+    }).then( (data) => {
+      //处理。。
+      console.log(data); 
+    }).catch( (err) =>{
+      console.log(err);
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+{
+  "name": "meetwebpack",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack",
+    "//": "--注释--：在脚本中将webpack语句映射为build语句，之后直接执行“npm run build”=执行“webpack” ",
+    "///": "        且在脚本里执行的“webpack”优先从本地找webpack命令,避免本地与全局webpack版本不一致带来的麻烦(只要在终端敲命令，用的都是全局"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^3.6.0"
+  }
+}

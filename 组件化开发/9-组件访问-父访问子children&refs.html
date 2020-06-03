@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+    <script src="../../../vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <button @click="handleClick">按钮</button>
+        <cpn></cpn>
+        <cpn></cpn>
+        <cpn ref="aaa"></cpn>
+
+    </div>
+
+    <template id="mycpn">
+        <div>
+            <p>我是子组件</p>
+        </div>
+    </template>
+    <script>
+
+        const cpn = {
+            template:'#mycpn',
+            data(){
+                return {
+                    name:'我是子组件的name'
+                }
+            },
+            methods:{
+                showMessage(){
+                    console.log('showMessage函数被调用')
+                }
+            }
+        }
+        new Vue({
+            el:"#app",
+            methods:{
+                handleClick(){
+
+                    // //1.$children（少用
+                    // console.log(this.$children)//打印一下看看$children是啥玩应（结果是数组
+                    // //可用for循环遍历
+                    // for(let i of this.$children){
+                    //     i.showMessage();
+                    //     console.log(i.name)
+                    // }
+                    // //直接用下标索引
+                    // this.$children[0].showMessage()
+
+                    //2.$refs（常用
+                    console.log(this.$refs)//打印一下看看是啥，$refs是对象类型，子组件标签中没有“ref="xxx"”时默认为空
+                    this.$refs.aaa.showMessage();
+                    console.log(this.$refs.aaa.name)
+                }
+            },
+            components:{
+                'cpn':cpn
+            }
+           
+        })
+    </script>
+</body>
+</html>

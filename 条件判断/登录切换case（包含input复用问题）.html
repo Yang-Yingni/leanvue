@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../../../vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- 利用不同key属性值绑定两个input解决input内容复用问题 -->
+        <span v-if="isUser">
+            <label for="username">用户名称</label>
+            <input type="text" id="username" placeholder="用户名" key="username">
+        </span>
+        <span v-else>
+            <label for="email">邮箱账号</label>
+            <input type="text" id="email" placeholder="邮箱账号" key="email">
+        </span>
+        <button @click="isUser=!isUser">切换登陆方式</button>
+    </div>
+    <script>
+        const app = new Vue({
+            el:"#app",
+            data:{
+                isUser:true
+            }
+        }) 
+    
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../../../vue.js"></script>
+    <style>
+        .active{
+            color:red;
+        }
+    </style> 
+</head>
+
+<body>
+    <div id="root">
+        实现：显示列表，点击谁谁变红色<br>
+        <ul>
+            <li v-for="(item,index) of list" 
+                @click="handleClick(index)" 
+                :class="{active:currentIndex==index}">
+                {{item}}
+            </li>
+        </ul>
+    </div>
+    <script>
+        new Vue({
+            el:"#root",
+            data(){
+                return {
+                    list:['aaa','bbb','ccc','ddd'],
+                    currentIndex:0
+                }
+            },
+            methods:{
+                handleClick(index){
+                    this.currentIndex=index
+                }
+            }
+        })
+    </script>
+    
+</body>
+</html>

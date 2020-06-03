@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+    <script src="../../../vue.js"></script>
+</head>
+<body>
+
+    <div id="app">
+        <cpn></cpn>
+        <!-- 通过“v-slot:name名(注意：无引号！)”绑定模板中slot标签的name，来做到精确替换 -->
+        <cpn>
+            <template v-slot:center><span>标题</span></template>
+            <template v-slot:left><button>返回</button></template>
+        </cpn>
+        <!-- 具名插槽“v-slot:ceneter”的语法糖：“#center” -->
+        <cpn>
+            <template #center><span>标题</span></template>
+            <template #left><button>返回</button></template>
+        </cpn>
+    </div>
+
+    <template id="cpn">
+        <div>
+            <h2>我是组件</h2>
+            <slot name="left"><span>左边</span></slot>
+            <slot name="center"><span>中间</span></slot>
+            <slot name="right"><span>右边</span></slot>
+        </div>
+    </template>
+    <script>
+
+        
+        new Vue({
+            el:"#app",
+            
+            components:{
+                cpn:{
+                    template:'#cpn',
+                }
+            }
+           
+        })
+    </script>
+</body>
+</html>

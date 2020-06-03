@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../../vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="item of letters">{{item}}</li>
+        </ul>
+        <button @click="btnClick">btn</button>
+    </div>
+    <script>
+        const app = new Vue({
+            el:"#app",
+            data: {
+                letters:['a','b','c','d']
+            },
+            methods:{
+                btnClick(){
+                // 可响应式方法：
+                // 1.push() 在数组最后添加值（可加多个）
+                    //this.letters.push('aaa')
+                    //this.letters.push('aaa','bbb','ccc')
+                // 2.pop()
+                    //this.letters.pop()
+                // 3.shift() 在数组开头删除值
+                    //this.letters.shift()
+                // 4.unshift() 在数组开头添加值（可加多个
+                    //this.letters.unshift('aaa','bbb','ccc')
+                // 5.spilce(开始位置,删除个数,添加内容)
+                    //this.letters.splice(1)-->删除
+                    //this.letters.splice(1,0,'aaa','bbb')-->插入
+                    //this.letters.splice(1,3,'aaa','bbb','ccc')-->替换
+                // 6.sort()
+                // 7.reverse()
+
+
+                //注！通过索引[]修改数组中的元素为不可响应式！
+                    //this.letters[0]='aaa'-->错误的！
+                //解决方法：
+                  //1.利用splice()
+                    //this.letters.splice(0,1,'aaa')
+                  //2.利用vue的set方法：set(要修改的对象,索引值,修改后的值)
+                    Vue.set(this.letters,0,'aaa')
+                    
+
+                }
+            }
+        }) 
+    
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 需求：1.将nums数组<100的值提取出来
+          2.再将这些值*2
+          3.求和 -->
+    <script>
+    const nums=[122,341,34,5,31,22]
+        //不用高阶函数很麻烦，需要循环遍历三次
+        //利用filter,map,reduce来实现
+
+        //这些高阶函数中 function传入的参数n，实际上是对应调用这些高阶函数的数组本身
+        //需求1：利用filter()函数过滤出符合回调函数的项，返回新数组
+        let newNums = nums.filter(function(n){
+            return n<100;
+        });
+        console.log(newNums)
+        //需求2：利用map()函数对每一项进行操作，返回新数组
+        let newNums2 = newNums.map(function(n){
+            return n*2;
+        });
+        console.log(newNums2)
+        //需求3：利用reduce(回调函数(previousValue,curentValue){},previousValue初始值)
+        let total = newNums2.reduce(function(previousValue,n){
+            return previousValue + n
+        },0)
+        console.log(total)
+
+        //利用ES6简化代码
+        let total2 = nums.filter(n => n <100).map(n => n*2).reduce((pre,n) => pre + n,0);
+        console.log(total2)
+
+    </script>
+</body>
+</html>

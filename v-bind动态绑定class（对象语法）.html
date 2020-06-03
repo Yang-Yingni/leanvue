@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../../vue.js"></script>
+    <style>
+        .active{
+            color:red;
+        }
+        .line{
+            color:grey;
+        }
+    </style>
+</head>
+<body>
+    <div id="root">
+        <!-- 
+            格式（里面的boolean值用变量来控制）：
+            <h1 v-bind:class="{类名1:boolean,类名2:boolean}">{{mgg}}</h1> 
+        -->
+        <h1 v-bind:class="{active:isActive,line:isLine}">{{msg}}</h1>
+
+        <!-- 
+            或者将class里的内容换成一个函数,然后return {active:this.isActive,line:this.isLine}
+            注意！此函数后面要加“()” 别忘了“this”
+        -->
+        <h1 v-bind:class="getClass()">lueluelue</h1>
+        <button @click="btnClick">change</button>
+
+    </div>
+    <script>
+        new Vue({
+            el:"#root",
+            data(){
+                return {
+                    msg:'nihaoya',
+                    isActive:true,
+                    isLine:false
+                }
+            },
+            methods:{
+                btnClick:function(){
+                    this.isActive=!this.isActive;
+                    this.isLine=!this.isLine
+                },
+                getClass:function(){
+                    return {active:this.isActive,line:this.isLine}
+                }
+            }
+
+        })
+    </script>
+</body>
+</html>

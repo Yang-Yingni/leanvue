@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../../../vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <!-- 1.直接获取对象的value值 -->
+            <li v-for="item in info">{{item}}</li>
+            <!-- 2.获取对象的key和value 格式：(value,key) -->
+            <li v-for="(value,key) in info">{{key}}:{{value}}</li>
+            <!-- 3.获取对象的key，value和index 格式：(value,key,index) -->
+            <li v-for="(value,key,index) in info">{{index}}.{{key}}:{{value}}</li>
+        </ul>
+        
+    </div>
+    <script>
+        const app = new Vue({
+            el:"#app",
+            data:{
+                info:{
+                    name:'smy',
+                    team:'HII',
+                    rand:'top16'
+                }
+            }
+            
+        }) 
+    
+    </script>
+    
+</body>
+</html>

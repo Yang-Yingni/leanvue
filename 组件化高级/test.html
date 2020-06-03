@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+    <script src="../../../vue.js"></script>
+</head>
+<body>
+    <!-- 需求：将子组件的pLanguage以“-”链接的方式排列
+    方法：利用slot绑定属性，父组件拿到子组件中的数据，在父组件模板中进行排列 -->
+    <div id="app">
+        <cpn ref="aaa"></cpn>
+        {{language}}
+
+    </div>
+
+    <template id="cpn">
+        <div>
+
+        </div>
+    </template>
+    <script>
+
+        
+        new Vue({
+            el:"#app",
+            data:{
+                language:this.$refs.aaa.pLanguages
+            },
+            components:{
+                cpn:{
+                    template:'#cpn',
+                    data(){
+                        return{
+                            pLanguages:['java','phython','javascript','c++']
+                        }
+                    }
+                }
+            }
+           
+        })
+    </script>
+</body>
+</html>

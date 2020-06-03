@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+    <script src="../../../vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <cpn :number="num"></cpn>
+    </div>
+    <template id="cpn">
+        <div>
+            <!-- <p>{{number}}</p> -->
+            <!-- <input type="text" v-model="number">
+            这样会报错！因为子组件number的值同时受v-model和prop绑定两个指令影响，这样在vue中是不允许的！
+            解决方法：子组件中再整个变量来装改变的东东 （整个data出来）,然后在v-model这个变量！-->
+
+            <p>props:{{number}}这个不会变</p>
+            <p>data:{{dnum}}这个动态改变</p>
+            <input type="text" v-model="dnum">
+
+        </div>       
+    </template>
+    <script>
+        const app = new Vue({
+            el:"#app",
+            data:{
+                num:0
+            },
+            components:{
+                cpn:{
+                    template:'#cpn',
+                    props:{
+                        number:Number,
+                    },
+                    data() {
+                    //看这里！！！(用prop里number的值初始化dnum
+                    return {
+                        dnum: this.number
+                    }
+                }
+                }
+                
+            }
+           
+        })
+    </script>
+</body>
+</html>

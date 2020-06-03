@@ -1,0 +1,5 @@
+/* 这里配置公用的css样式，然后再导出到App.vue的style标签里就ok */
+body{
+  padding: 0;
+  margin: 0;
+}

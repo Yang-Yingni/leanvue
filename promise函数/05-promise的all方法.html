@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title></title>
+</head>
+<body>
+<script>
+//需求:同时发送两个网络请求，需要两个网络请求均返回数据时，才能将数据一起处理
+
+//利用Promise.all([..,..]),数组里传被promise包装的异步操作（网络请求）
+
+Promise.all([
+  new Promise( (resolve,reject) => {
+    //用setTimeout模拟网络请求
+    setTimeout( () => {
+      resolve('aaa')
+    },2000)
+  }),
+  new Promise( (resolve,reject) => {
+    //用setTimeout模拟网络请求
+    setTimeout( () => {
+      resolve('bbb')
+    },1000)
+  })
+]).then(results => {
+//results为Promise.all方法返回的一个数组（results[0]对应第一个Promise的请求结果，由此类推
+  console.log(results)
+  console.log(results[0] + results[1]);
+})
+
+</script>
+</body>
+</html>

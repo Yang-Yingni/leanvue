@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../../../vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div>{{firstname}}</div>
+        <div>{{lastname}}</div>
+        <div>{{getFullname()}}</div>
+        <div>{{fullname0}}</div>
+        <div>{{fullname1}}</div>
+    </div>
+    <script>
+        const app = new Vue({
+            el:"#app",
+            data(){
+                return {
+                    firstname:'lana',
+                    lastname:'del rey',
+                    
+                }
+            },
+            methods:{
+                getFullname:function(abc){
+                    console.log(abc);
+                    return this.firstname +' '+this.lastname
+                }
+            },
+            // 其实computed里包含的是对象
+            // 此对象属性里包含两种方法：set 和 get ，一般set方法不用，所以只有get只读属性
+            // 所以就缩写成另一个fullname0那样(和计算属性hmtl文件的demo一样)
+            // 注：计算属性后面不用跟括号 (与motheds属性区别)
+            //     computed属性具有内部缓存，在值没有发生变化的时候，重复调用只执行一次
+            //     而metheds方法每调用一次就执行一次 8好
+            computed:{
+                fullname1:{
+                    set:function(newValue){
+                        console.log('----',newValue);
+                        var names = newValue.split(' ');
+                        this.firstname = names[0];
+                        this.lastname = names[1];
+                    },
+                    get:function(){
+                        return this.firstname +' '+this.lastname
+                    }
+                },
+                fullname0:function(){
+                    return this.firstname +' '+this.lastname
+                }
+            }
+        })
+    </script>
+</body>
+</html>

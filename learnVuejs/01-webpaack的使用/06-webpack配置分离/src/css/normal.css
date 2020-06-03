@@ -1,0 +1,8 @@
+body {
+    /* background-color: aqua; */
+    /* background: url('../pic/test01.jpg');由于用了url引用图片，所以要装url-loader，并进行配置（此图片小于limit值 */
+    background: url('../pic/test02.jpg')
+
+}
+/*将css文件也当成一个模块打包到bundle.js里,html文件里只引用bundle.js一个文件就ok*/
+/*因为打包入口为main.js所以要先在main.js里导入CSS文件*/

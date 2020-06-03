@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <script src="../../../vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- <cpn :cInfo = "info"> </cpn> 错错错！
+        这样写会绑定失败，因为v-bind无法识别驼峰，必须改成以“-”连接才可，如下： -->
+        <cpn :c-info = "info"> </cpn>
+    </div>
+
+    <template id="cpn">
+        <div>
+            {{cInfo}}
+        </div>
+    </template>
+<script>
+    const cpn = {
+        template:'#cpn',
+        props: {
+            cInfo:{
+                type:Object,
+                default() {
+                    return {}
+                }
+            },
+        }
+    }
+    new Vue({
+        el:'#app',
+        data:{
+            info:{
+                name:'smy',
+                age:22,
+                hight:167
+            }
+        },
+        components:{
+            cpn
+        }
+    })
+
+</script>
+    
+</body>
+</html>

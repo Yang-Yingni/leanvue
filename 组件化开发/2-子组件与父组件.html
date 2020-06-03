@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+    <script src="../../../vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <!-- 3.使用组件 -->
+        <cpn2></cpn2>
+    </div>
+    <script>
+        //1.创建第一个组件构造器（子组件）
+        const cpnC1 = Vue.extend({
+            template:`
+            <div>
+                <h3>hello</h3>
+                <p>world</p>
+            </div>`
+        })
+        //2.创建第二个组件构造器（父组件）
+        const cpnC2 = Vue.extend({
+            template:`
+            <div>
+                <h3>goodbye</h3>
+                <p>idiot</p>
+                <cpn1></cpn1>
+            </div>`,
+            //在父组件内部注册子组件（之后子组件只在父组件内部有效，可在父组件模板里调用子组件
+            components:{
+                cpn1:cpnC1
+            }
+        })
+
+        //实例Vue可看作根组件（root
+        const root = new Vue({
+            el:"#root",
+
+            //在Vue里注册父组件            
+            components:{
+                cpn2:cpnC2
+            }
+           
+        })
+    </script>
+</body>
+</html>

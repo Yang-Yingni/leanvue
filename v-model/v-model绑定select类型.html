@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+    <script src="../../../vue.js"></script>
+</head>
+<body>
+    <div id="root">
+       1.选择一个
+       <select name="abc" v-model="fruit">
+           <option value="香蕉">香蕉</option>
+           <option value="橙子">橙子</option>
+           <option value="苹果">苹果</option>
+           <option value="西瓜">西瓜</option>
+       </select>
+       <h3>您选择的水果是：{{fruit}}</h3>
+       2.选择多个<!-- 注意记得在select里加multiple属性 -->
+       <select name="bcd" v-model="fruits" multiple>
+            <option value="香蕉">香蕉</option>
+           <option value="橙子">橙子</option>
+           <option value="苹果">苹果</option>
+           <option value="西瓜">西瓜</option>
+       </select>
+       <h3>您选择的水果是：{{fruits}}</h3>
+
+    </div>
+    <script>
+        new Vue({
+            el:"#root",
+            data:{
+                fruit:'橙子',//默认选中橙子
+                fruits:[]
+            }
+        })
+    </script>
+</body>
+</html>

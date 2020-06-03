@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <script src="../../../vue.js">   </script>
+</head>
+<body>
+    <!-- 父组件模板 -->
+    <div id="app">
+        <!-- 监听子组件发送的itemclick事件 -->
+        <cpn @itemclick="cpnClick"></cpn>
+        <!-- 注意！监听自定义事件传参时不用加括号写明参数，因为自定义事件只穿这一个参，如果写了反而会报错！！
+        <cpn @itemclick="cpnClick(item)"></cpn> 错错错！ -->
+    </div>
+
+    <!-- 子组件模板 -->
+    <template id="cpn">
+        <div>
+            <button v-for="item in categories" 
+                    @click="btnClick(item)"> 
+                    {{item.name}}
+            </button>
+        </div>
+    </template>
+    <script>
+        //子组件
+        const cpn = {
+            template:'#cpn',
+            data() {
+                return {
+                    categories:[
+                    {id:'aaa',name:'家用电器'},
+                    {id:'bbb',name:'数码手机'},
+                    {id:'ccc',name:'居家用品'},
+                    {id:'ddd',name:'餐饮美食'},
+                    ]
+                }
+            },
+            methods:{
+                btnClick(item){
+                    //发送名为itemclick的自定义事件，并在父组件模板中进行监听
+                    this.$emit('itemclick',item)
+                }
+            }
+        }
+
+        //父组件
+        const app = new Vue({
+            el:"#app",
+            data:{
+
+            },
+            components:{
+                cpn
+            },
+            methods:{
+                cpnClick(item){
+                    console.log('cpnclick',item.name)
+                }
+            }
+           
+        })
+    </script>
+    
+</body>
+</html>

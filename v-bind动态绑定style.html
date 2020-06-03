@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../../vue.js"></script>
+
+</head>
+
+<body>
+    <div id="root">
+        <!-- <h2 :style="{CSS属性名1:属性值,CSS属性名2:属性值,}">{{msg}}</h2>-->
+
+        <!--属性值50px必须加''，否则会被当做变量来解析 -->
+        <h2 :style="{fontSize:'50px'}">{{msg}}</h2>
+        <!-- 属性值finalSize当成一个变量来使用 -->
+        <h2 :style="{fontSize:finalSize + 'px',backgroundColor:finalColor}">{{msg}}</h2>
+        <!-- 或者style里的内容换成函数()，然后return -->
+        <h2 :style="getStyle()">{{msg}}</h2>
+    </div>
+    <script>
+        new Vue({
+            el:"#root",
+            data(){
+                return {
+                    msg:'nihaoya',
+                    finalSize:100,
+                    finalColor:'red'
+                }
+            },
+            methods:{
+                getStyle(){
+                    return {fontSize:this.finalSize + 'px',backgroundColor:this.finalColor}
+                }
+            }
+        })
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title></title>
+</head>
+<body>
+  <script>
+    //另一种写法，无论成功失败都在then里处理，then(函数1,函数2)
+    //函数1为成功时调用的，函数2失败时调用
+    new Promise( (resolve,reject) =>{
+      setTimeout( () => {
+        //resolve('参数')
+        reject('err')
+      }, 1000)
+    }).then( (data) => {
+      console.log(data);
+    },(err) =>{
+      console.log(err);
+    })
+    //这里的"(data)"和"(err)"的括号都可以不要，因为这俩箭头函数都只有一个参数
+  </script>
+</body>
+</html>

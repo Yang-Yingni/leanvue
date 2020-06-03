@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+    <script src="../../../vue.js"></script>
+</head>
+<body>
+    <!-- 
+    有两个isShow变量，但是此处isShow变量值是用的Vue实例里的（变量在哪个模板里，就用对应实例的变量值
+    因为它在vue实例挂载的模板里
+    所以运行结果cpn标签内容得以显示 
+    -->
+    <div id="app">
+        <cpn v-show="isShow"></cpn>
+    </div>
+
+    <template id="cpn">
+        <div>
+            <h2>我是标题</h2>
+            <p>我是内容哈哈哈</p>
+            <!-- 同理，此处isShow变量为组件里的值，即false -->
+            <button v-show="!isShow">按钮</button>
+        </div>
+    </template>
+    <script>
+
+        
+        new Vue({
+            el:"#app",
+            data:{
+                isShow:true
+            },
+            components:{
+                cpn:{
+                    template:'#cpn',
+                    data(){
+                        return{
+                            isShow:false
+                        }
+                    }
+                }
+            }
+           
+        })
+    </script>
+</body>
+</html>

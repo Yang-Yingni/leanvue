@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title></title>
+</head>
+<body>
+  
+  <script>
+  //1. 参数问题
+    //1.1 两个参数
+    const sum = (num1, num2) => {
+      return num1 + num2
+    }
+    //1.2 一个参数（此时参数的“()”可省略
+    const power = num => {
+      return num * num 
+    }
+
+  //2. 返回值问题
+    //2.1 函数代码块中有多行代码
+    const aaa = () => {
+      console.log('aaa');
+      console.log('bbb');  
+    }
+    //2.2 函数代码块中只有一行代码
+    // const mul = (num1, num2) => {
+    //   return num1 * num2
+    // }
+    // 有简便写法如下：（会自动把结果值作为返回值return出去
+    const mul = (num1, num2) => num1 * num2
+    console.log(mul(20,30));
+
+    const demo = () => console.log('demo');
+    console.log(demo());
+    //demo函数无返回值，所以打印结果为demo undefined
+    
+    
+    
+  </script>
+</body>
+</html>

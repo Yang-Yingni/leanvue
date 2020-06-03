@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../../../vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div>
+            <h2 v-if="isShow">isShow</h2>
+            <h2 v-else>hide</h2>
+        </div>
+        <div>
+            <h2 v-if="grade>=90">perfect</h2>
+            <h2 v-else-if="grade>=80">good</h2>
+            <h2 v-else-if="grade>=60">soso</h2>
+            <h2 v-else>bad</h2>
+        </div>
+        <!-- 但其实我们一般不在HTML里写这么复杂的判断，而是用computed属性实现： -->
+        <div>
+            <h2>{{result}}</h2>
+        </div>
+    </div>
+    <script>
+        const app = new Vue({
+            el:"#app",
+            data:{
+                isShow:false,
+                grade:9
+            },
+            computed:{
+                result(){
+                    let showMsg='';
+                    if (this.grade>=90){
+                        showMsg='perfect'
+                    }
+                    else if(this.grade>=80){
+                        showMsg='good'
+                    }
+                    else if(this.showMsg>=60){
+                        showMsg='soso'
+                    }
+                    else showMsg='bad'
+                    return showMsg;
+                }
+            }
+           
+        }) 
+    
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>属性绑定与双向数据绑定</title>
+    <script src="../../../vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <div :title="'aaaaa'+title">nihaoya</div>
+        <input type="text" v-model="content">
+        <p>{{content}}</p>
+
+    </div>
+    <script>
+        new Vue({
+            el:"#root",
+            data:{
+                title:"this a tilte",
+                content:"this a content"
+            }
+        })
+    </script>
+</body>
+</html>

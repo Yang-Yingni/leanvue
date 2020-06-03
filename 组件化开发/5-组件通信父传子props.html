@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+    <script src="../../../vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <cpn  :cmovies="movies" :cmessage="message"> <!--子组件cpn在父组件中使用，并绑定传数据-->
+        </cpn>
+    </div>
+
+    <!-- 模板里使用的变量都是局部组件props里注册的 -->
+    <template id="cpn">
+        <div>
+            <h2>{{cmessage}}</h2>
+            <ul>
+                <li v-for="item in cmovies" >{{item}}</li>
+            </ul>
+        </div>
+    </template>
+    <script>
+        const cpn = {
+            template:'#cpn',
+
+            //1.数组写法（不常用)
+            //props:['cmovies','cmessage'],
+            
+            //2.对象写法
+            props:{
+
+                // 可进行类型限制
+                // cmovies:Array,
+                // cmessage:String,
+
+                //再利用对象写法提供一些默认值（没有绑定传值过来时的值），也可规定此数据是否为必须(即在父组件里用自定义组件时必须绑定)
+                cmessage:{
+                    type:String,
+                    default:'000',
+                    required:true,
+                },
+                cmovies:{
+                    type:Array,
+                    default() {
+                        return []
+                    }
+                    //若变量类型为数组/对象时，默认值必须为一个函数（用此函数返回默认值），而不是直接写数组/对象
+                }
+            }
+        }
+        const app = new Vue({
+            el:'#app',
+            data:{
+                message:'hello',
+                movies:['海王','海尔兄弟','海贼王']
+            },
+            components:{
+                'cpn':cpn
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../../../vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <!-- 注：key值的设置应该与item值一一对应，所以避免用index作为key值（因为index值易变 -->
+            <li v-for="item of letters" :key="item">{{item}}</li>
+        </ul>
+    </div>
+    <script>
+        const app = new Vue({
+            el:"#app",
+            data:{
+                letters:['a','b','c','d','e']
+            }
+            
+        }) 
+    
+    </script>
+    
+</body>
+</html>
